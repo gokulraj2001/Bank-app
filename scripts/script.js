@@ -47,6 +47,15 @@ const updateDOM = function(providedData = data){
 
 }
 
+// double balance
+
+const doubleBalance = function(){
+    data = data.map(user =>{
+        return {...user, balance: user.balance*2};
+    });
+    updateDOM();
+};
+
 
 // call Random User
 getRandomUser();
@@ -55,4 +64,6 @@ getRandomUser();
 
 
 // event listeners
-btnAddUser.addEventListener('click', getRandomUser)
+btnAddUser.addEventListener('click', getRandomUser);
+
+btnDouble.addEventListener('click', doubleBalance);
