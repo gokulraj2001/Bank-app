@@ -38,13 +38,12 @@ const updateDOM = function(providedData = data){
         const element = document.createElement('div');
         element.classList.add('users');
         element.innerHTML = `<strong>${item.name}</strong>₹${formatToCurrency(item.balance)}`;
-        main.appendChild(element);
-    })
+        main.appendChild(element)
+    });
+};
 
-    function formatToCurrency(amount){
-        return (amount).toFixed(2).replace(/\d(?=(\d{3})+\.)/g, '$&,'); 
-    }
-
+function formatToCurrency(amount){
+    return (amount).toFixed(2).replace(/\d(?=(\d{3})+\.)/g, '$&,') ;
 }
 
 // double balance
@@ -55,6 +54,23 @@ const doubleBalance = function(){
     });
     updateDOM();
 };
+
+// filter rich
+
+const filterRich = function(){
+    data = data.filter((user) => user.balance > 50000);
+    updateDOM();
+};
+
+// total balance
+const totalBalance = function(){
+    const wealth = data.reduce((acc, user) => (acc = acc + user.balance), 0);
+    console.log(wealth);
+    const wealthEl = document.createElement('div');
+    wealthEl.innerHTML = `<h3>Total Balance: <strong>${formatToCurrency(wealth)}</strong></h3>`;
+    main.appendChild(wealthEl);
+
+}
 
 
 // call Random User
@@ -67,3 +83,7 @@ getRandomUser();
 btnAddUser.addEventListener('click', getRandomUser);
 
 btnDouble.addEventListener('click', doubleBalance);
+
+btnFilter.addEventListener('click', filterRich);
+
+btnTotal.addEventListener('click', totalBalance);
