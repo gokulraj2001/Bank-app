@@ -5,7 +5,6 @@ const btnAddUser = document.getElementById('add-user');
 const btnDouble = document.getElementById('double');
 const btnFilter = document.getElementById('filter-rich');
 const btnTotal = document.getElementById('total');
-
 // add user button
 let data = [];
 
@@ -71,8 +70,6 @@ const totalBalance = function(){
     main.appendChild(wealthEl);
 
 }
-
-
 // call Random User
 getRandomUser();
 getRandomUser();
